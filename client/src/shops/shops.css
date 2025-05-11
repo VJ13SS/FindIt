@@ -1,0 +1,21 @@
+.shops{
+    width: 95vw;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.shop-cards{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+@media(max-width:950px){
+    .shop-cards{
+        flex-direction: column;
+    }
+}
