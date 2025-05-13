@@ -25,3 +25,16 @@ a{
 body{
   min-height: 100vh;
 }
+
+table,table th,table td{
+  border: 1px solid black;
+  text-align: center;
+}
+
+.view-shop table{
+  width: 50vw;
+}
+
+table th,table td{
+  padding: 5px;
+}

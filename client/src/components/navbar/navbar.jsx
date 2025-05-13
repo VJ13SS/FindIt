@@ -1,16 +1,17 @@
 import { useContext } from "react";
 import { AppContext } from "../../context/AppContext";
 import "./navbar.css";
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   //<span>Sumangali furnitures</span>
 
   const { displayLoginPopUp, setDisplayLoginPopUp } = useContext(AppContext);
-
+  const navigate = useNavigate()
   return (
     <nav>
       <div className="nav-left">
-        <img src="/Images/FindItLogo.png" alt="" />
+        <img src="/Images/FindIt.svg" alt="" onClick={() => navigate('/')}/>
       </div>
       <div className="nav-right">
         <div className="search-container">

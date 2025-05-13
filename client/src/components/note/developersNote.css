@@ -1,0 +1,22 @@
+.developers-note-container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 30px;
+    padding: 20px;
+    color: rgb(87, 85, 85);
+    font-weight: 500;
+}
+
+.developers-note{
+    padding: 10px;
+    border: 5px solid rgb(145, 210, 243);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.developers-note p{
+    line-height: 30px;
+}

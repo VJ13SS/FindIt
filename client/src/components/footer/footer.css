@@ -1,0 +1,12 @@
+footer{
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 25px;
+    font-weight: 500;
+}
+
+footer img{
+    width: 90px;
+}
