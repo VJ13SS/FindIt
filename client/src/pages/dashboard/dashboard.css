@@ -1,0 +1,28 @@
+.dashboard{
+    display: flex;
+    width: 100%;
+    min-height: 90vh;
+}
+
+.dashboard-left{
+    min-width:25vw;
+    border-right: 1px solid gray;
+    cursor: pointer;
+}
+
+.dashboard-left .dashboard-icon{
+    width: 100%;
+    padding: 10px 15px;
+    
+    margin-bottom: 20px;
+   
+}
+
+.active-option{
+    background-color: rgb(189, 189, 203);
+    border-right: 5px solid blue;
+}
+
+.dashboard-right{
+    padding: 15px;
+}
