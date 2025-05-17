@@ -1,0 +1,54 @@
+.bookings{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    width: 70vw;
+}
+
+.bookings .header{
+    padding: 10px;
+    border: 1px solid gray;
+}
+
+
+.booking-order{
+    padding: 15px;
+    border: 1px solid gray;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.booked-products{
+    display: flex;
+    gap: 5px;
+    overflow-x: scroll;
+    
+}
+
+.options{
+    display: flex;
+    gap: 10px;
+}
+
+.options .option{
+    border: 2px solid gray;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.options .accepted{
+    background-color: rgb(122, 255, 122);
+    border: 4px solid rgb(7, 203, 7);
+}
+
+.options .rejected{
+    background-color: rgb(242, 162, 162);
+    border: 4px solid red;
+}
+
+@media(max-width:475px){
+    .bookings{
+        width: 50vw;
+    }
+}

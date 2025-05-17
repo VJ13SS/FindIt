@@ -1,6 +1,6 @@
 import { Outlet, useNavigate } from "react-router-dom";
 import "./dashboard.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Dashboard() {
 
@@ -21,6 +21,14 @@ export default function Dashboard() {
         setCurrentOption('bookings')
         navigate('/dashboard/bookings')
     }
+
+    
+
+    useEffect(() => {
+      navigate('/dashboard/add-items')
+    },[])
+
+
   return (
     <div className="dashboard">
       <div className="dashboard-left">

@@ -1,0 +1,51 @@
+.add-items{
+    width: 70vw;
+    font-weight: 500;
+}
+
+.add-items form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 60%;
+}
+
+form label{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+label img{
+    width: 100px;
+}
+
+form input,form button{
+    padding: 10px;
+}
+
+form input{
+    width: 50%;
+    outline: none;
+}
+form button{
+    margin-top: 20px;
+    width: 200px;
+    border-radius: 10px;
+    border: none;
+    background-color: black;
+    color: white;
+}
+
+@media(max-width:500px){
+    .add-items form{
+        width: 70%;
+    }
+    form input{
+        width: 80%;
+    }
+
+    .add-items form{
+        gap: 15px;
+    }
+}

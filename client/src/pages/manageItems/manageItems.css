@@ -1,0 +1,38 @@
+.manage-ietms {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 70vw;
+}
+
+.products-list-format {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 1fr;
+  align-items: center;
+ 
+  gap: 10px;
+}
+
+.products-list .header {
+  padding: 10px;
+  border: 1px solid gray;
+}
+
+.product img {
+  width: 70px;
+}
+
+.product {
+  border: 1px solid gray;
+  padding-inline: 5px;
+}
+
+.available {
+  background-color: rgb(6, 251, 6);
+  padding: 5px;
+}
+
+.not-available {
+  padding: 5px;
+  background-color: red;
+}

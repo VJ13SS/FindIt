@@ -13,6 +13,8 @@ import Bookings from "./pages/bookings/bookings";
 
 export default function App() {
   const { displayLoginPopUp, setDisplayLoginPopUp } = useContext(AppContext);
+  const [products,setProducts] = useState([])
+  console.log(products)
   return (
     <>
       {displayLoginPopUp ? (
@@ -24,8 +26,8 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/visit-shop/:id" element={<ViewShop />} />
             <Route path="/dashboard" element={<Dashboard />}>
-              <Route path="add-items" element={<AddItems />} />
-              <Route path="manage-items" element={<ManageItems />} />
+              <Route path="add-items" element={<AddItems setProducts={setProducts}/>} />
+              <Route path="manage-items" element={<ManageItems products ={products} setProducts={setProducts}/>} />
               <Route path="bookings" element={<Bookings />} />
             </Route>
           </Routes>

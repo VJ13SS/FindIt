@@ -1,17 +1,17 @@
 .dashboard{
     display: flex;
-    width: 100%;
+    width: 100vw;
     min-height: 90vh;
+    font-weight: 500;
 }
 
 .dashboard-left{
-    min-width:25vw;
     border-right: 1px solid gray;
     cursor: pointer;
 }
 
 .dashboard-left .dashboard-icon{
-    width: 100%;
+   
     padding: 10px 15px;
     
     margin-bottom: 20px;
