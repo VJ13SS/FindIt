@@ -1,9 +1,21 @@
 import { useParams } from "react-router-dom";
 import "./viewShop.css";
 import productsData from "./shopProducts";
+import { useContext } from "react";
+import { AppContext } from "../../context/AppContext";
 
 export default function ViewShop() {
   const { id } = useParams();
+  const {displayBookingPopup,setDisplayBookingPopup} = useContext(AppContext)
+
+  const bookingHandler = () => {
+    setDisplayBookingPopup(true)
+    window.scrollTo({
+      top:0,
+      behavior:"smooth"
+    })
+    document.body.classList.add('no-scroll')
+  }
   return (
     <div className="view-shop">
       <div className="shop-header">
@@ -45,6 +57,8 @@ export default function ViewShop() {
           ))}
         </tbody>
       </table>
+
+      <button onClick={bookingHandler}>Book Your Products?</button>
     </div>
   );
 }

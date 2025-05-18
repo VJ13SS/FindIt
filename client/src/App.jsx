@@ -5,14 +5,15 @@ import { AppContext } from "./context/AppContext";
 import Footer from "./components/footer/footer";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/home/home";
-import ViewShop from "./components/viewShop/viewShop";
+import ViewShop from "./pages/viewShop/viewShop";
 import Dashboard from "./pages/dashboard/dashboard";
 import AddItems from "./pages/addItems/addItems";
 import ManageItems from "./pages/manageItems/manageItems";
 import Bookings from "./pages/bookings/bookings";
+import BookingPopup from "./components/bookingPopup/bookingPopup";
 
 export default function App() {
-  const { displayLoginPopUp, setDisplayLoginPopUp } = useContext(AppContext);
+  const { displayLoginPopUp, setDisplayLoginPopUp,displayBookingPopup } = useContext(AppContext);
   const [products,setProducts] = useState([])
   console.log(products)
   return (
@@ -31,6 +32,8 @@ export default function App() {
               <Route path="bookings" element={<Bookings />} />
             </Route>
           </Routes>
+          {displayBookingPopup && <BookingPopup />}
+          
           <Footer />
         </div>
       )}

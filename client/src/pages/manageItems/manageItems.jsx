@@ -20,6 +20,7 @@ export default function ManageItems(){
                             <span>{product.product_name}</span>
                             <span>{product.price}</span>
                             <span className={`${product.status === 'available' ?'available':'not-available'}`}>{product.status}</span>
+                            <input type="checkbox" name="" id="" />
                         </div>
                     ))}
                

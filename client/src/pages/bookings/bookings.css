@@ -34,6 +34,7 @@
 .options .option{
     border: 2px solid gray;
     padding: 5px;
+    cursor: pointer;
     border-radius: 5px;
 }
 
