@@ -1,21 +1,15 @@
 import { useParams } from "react-router-dom";
 import "./viewShop.css";
 import productsData from "./shopProducts";
-import { useContext } from "react";
+import { useContext,useState } from "react";
 import { AppContext } from "../../context/AppContext";
 
 export default function ViewShop() {
   const { id } = useParams();
   const {displayBookingPopup,setDisplayBookingPopup} = useContext(AppContext)
 
-  const bookingHandler = () => {
-    setDisplayBookingPopup(true)
-    window.scrollTo({
-      top:0,
-      behavior:"smooth"
-    })
-    document.body.classList.add('no-scroll')
-  }
+  const [bookItems,setBookedItems] = useState([])
+  
   return (
     <div className="view-shop">
       <div className="shop-header">
@@ -39,6 +33,7 @@ export default function ViewShop() {
             <th>Image</th>
             <th>Product Name</th>
             <th>Availability</th>
+            <th>Book Item</th>
           </tr>
         </thead>
         <tbody>
@@ -53,12 +48,15 @@ export default function ViewShop() {
               <td>
                 <span className={product.status === 'Available'?'available':'not-available'}>{product.status}</span>
               </td>
+              <td>
+                {product.status === 'Available'? <input type="checkbox" onChange={()=>setBookedItems(prev => ([...prev,product.name]))}/> :<span>...</span>}
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
 
-      <button onClick={bookingHandler}>Book Your Products?</button>
+      <button onClick={()=>console.log(bookItems)}>Book Your Products?</button>
     </div>
   );
 }

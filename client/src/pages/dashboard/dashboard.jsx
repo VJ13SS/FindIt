@@ -19,7 +19,7 @@ export default function Dashboard() {
 
     const bookingsHandler = () =>{
         setCurrentOption('bookings')
-        navigate('/dashboard/bookings')
+        navigate('/dashboard/booking-orders')
     }
 
     

@@ -10,7 +10,7 @@ import Dashboard from "./pages/dashboard/dashboard";
 import AddItems from "./pages/addItems/addItems";
 import ManageItems from "./pages/manageItems/manageItems";
 import Bookings from "./pages/bookings/bookings";
-import BookingPopup from "./components/bookingPopup/bookingPopup";
+import UserBookings from "./pages/userBookings/userBookings";
 
 export default function App() {
   const { displayLoginPopUp, setDisplayLoginPopUp,displayBookingPopup } = useContext(AppContext);
@@ -29,10 +29,10 @@ export default function App() {
             <Route path="/dashboard" element={<Dashboard />}>
               <Route path="add-items" element={<AddItems setProducts={setProducts}/>} />
               <Route path="manage-items" element={<ManageItems products ={products} setProducts={setProducts}/>} />
-              <Route path="bookings" element={<Bookings />} />
+              <Route path="booking-orders" element={<Bookings />} />
             </Route>
+            <Route path="/user-bookings" element={<UserBookings />} />
           </Routes>
-          {displayBookingPopup && <BookingPopup />}
           
           <Footer />
         </div>

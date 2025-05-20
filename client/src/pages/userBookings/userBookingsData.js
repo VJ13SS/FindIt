@@ -1,0 +1,40 @@
+const userBookingsData  = [
+    {
+        shop:'test1',
+        location:'alathur',
+        phone:'12345678',
+        products:['test1','test2','test3']
+    },
+    {
+        shop:'test1',
+        location:'alathur',
+        phone:'12345678',
+        products:['test1','test2','test3']
+    },
+    {
+        shop:'test1',
+        location:'alathur',
+        phone:'12345678',
+        products:['test1','test2','test3']
+    },
+    {
+        shop:'test1',
+        location:'alathur',
+        phone:'12345678',
+        products:['test1','test2','test3']
+    },
+    {
+        shop:'test1',
+        location:'alathur',
+        phone:'12345678',
+        products:['test1','test2','test3']
+    },
+    {
+        shop:'test1',
+        location:'alathur',
+        phone:'12345678',
+        products:['test1','test2','test3']
+    },
+]
+
+export default userBookingsData
