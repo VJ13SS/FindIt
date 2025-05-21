@@ -11,6 +11,7 @@ import AddItems from "./pages/addItems/addItems";
 import ManageItems from "./pages/manageItems/manageItems";
 import Bookings from "./pages/bookings/bookings";
 import UserBookings from "./pages/userBookings/userBookings";
+import Events from "./pages/events/events";
 
 export default function App() {
   const { displayLoginPopUp, setDisplayLoginPopUp,displayBookingPopup } = useContext(AppContext);
@@ -30,6 +31,7 @@ export default function App() {
               <Route path="add-items" element={<AddItems setProducts={setProducts}/>} />
               <Route path="manage-items" element={<ManageItems products ={products} setProducts={setProducts}/>} />
               <Route path="booking-orders" element={<Bookings />} />
+              <Route path="events" element={<Events />} />
             </Route>
             <Route path="/user-bookings" element={<UserBookings />} />
           </Routes>

@@ -22,6 +22,10 @@ export default function Dashboard() {
         navigate('/dashboard/booking-orders')
     }
 
+    const eventsHandler = () =>{
+      setCurrentOption('events')
+      navigate('/dashboard/events')
+  }
     
 
     useEffect(() => {
@@ -35,6 +39,7 @@ export default function Dashboard() {
         <div className={`dashboard-icon ${currentOption === 'add' ? 'active-option':""}`} onClick={addHandler}>Add Items</div>
         <div className={`dashboard-icon ${currentOption === 'manage' ? 'active-option':""}`}onClick={manageItemsHandler}>Manage Items</div>
         <div className={`dashboard-icon ${currentOption === 'bookings' ? 'active-option':""}`} onClick={bookingsHandler}>Bookings</div>
+        <div className={`dashboard-icon ${currentOption === 'events' ? 'active-option':""}`} onClick={eventsHandler}>Events</div>
       </div>
       <div className="dashboard-right">
         <Outlet />

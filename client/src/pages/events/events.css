@@ -1,0 +1,25 @@
+.events {
+  width: 60vw;
+
+  min-height: 90vh;
+}
+
+.events form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 90%;
+  padding: 5px;
+}
+
+.events form label img {
+  width: 175px;
+}
+
+form textarea {
+  width: 95%;
+  height: 300px;
+  outline: none;
+  padding: 5px;
+  resize: none;
+}

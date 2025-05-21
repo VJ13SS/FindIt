@@ -6,8 +6,9 @@ nav{
     justify-content: space-between;
     box-shadow: 0 2px 4px rgba(0,0,0,0.3);
     flex-shrink: 0;
-    font-weight: bold;
+    font-weight: 500;
     color: gray;
+    position: relative;
 }
 
 .nav-left,.nav-right,.nav-right .search-container{
@@ -49,6 +50,33 @@ nav button{
     padding: 5px 10px;
     background-color: rgb(12, 111, 193);
     color: white;
+}
+
+.login-options{
+    position: absolute;
+    padding-block: 5px;
+    padding-inline: 10px;
+    top: 64px;
+    right: 0px;
+    background-color: white;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 100px;
+    gap: 7px;
+    border: 1px solid gray;
+    font-weight: 400;
+    color: black;
+    font-size: 15px;
+}
+
+.login-options-container:hover .login-options{
+    display: flex;
+}
+
+
+.log-out{
+    color: red;
 }
 
 @media (max-width:1050px){

@@ -12,6 +12,7 @@ export default function ManageItems(){
                     <span>Name</span>
                     <span>Price</span>
                     <span>Status</span>
+                    <span>Visible</span>
                 </div>
                 
                     {products_list.map((product,indx) => (

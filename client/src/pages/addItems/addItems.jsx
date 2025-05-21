@@ -26,7 +26,6 @@ export default function AddItems({ setProducts }) {
     });
     setImage(false);
   };
-  console.log(data, image);
 
   return (
     <div className="add-items">
