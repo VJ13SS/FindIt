@@ -6,8 +6,21 @@ import { useNavigate } from "react-router-dom";
 export default function Navbar() {
   //<span>Sumangali furnitures</span>
 
-  const { displayLoginPopUp, setDisplayLoginPopUp } = useContext(AppContext);
+  const { displayLoginPopUp, setDisplayLoginPopUp,setUserLogin,setShopLogin,setCurrentState } = useContext(AppContext);
   const navigate = useNavigate();
+  const userLoginHandler = () => {
+    setUserLogin(true)
+    setShopLogin(false)
+    setCurrentState('login')
+    setDisplayLoginPopUp(true)
+  }
+  const shopLoginHandler = () => {
+    setShopLogin(true)
+    setUserLogin(false)
+    setDisplayLoginPopUp(true)
+    setCurrentState('login')
+  }
+
   return (
     <nav>
       <div className="nav-left">
@@ -20,9 +33,12 @@ export default function Navbar() {
         </div>
 
         <div className="login-options-container">
-          <button className="log-in" onClick={() => setDisplayLoginPopUp(true)}>
-            Login
+          <span onClick={userLoginHandler}>User Login</span>
+          <span>/</span>
+          <button className="log-in" onClick={shopLoginHandler}>
+            Shop Login
           </button>
+          
           <div className="login-options">
             <span>Options</span>
             <span className="log-out">LogOut</span>

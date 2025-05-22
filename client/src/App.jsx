@@ -12,6 +12,8 @@ import ManageItems from "./pages/manageItems/manageItems";
 import Bookings from "./pages/bookings/bookings";
 import UserBookings from "./pages/userBookings/userBookings";
 import Events from "./pages/events/events";
+import {ToastContainer,toast} from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css'
 
 export default function App() {
   const { displayLoginPopUp, setDisplayLoginPopUp,displayBookingPopup } = useContext(AppContext);
@@ -23,6 +25,7 @@ export default function App() {
         <LoginPopUp />
       ) : (
         <div className="app">
+          <ToastContainer />
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />

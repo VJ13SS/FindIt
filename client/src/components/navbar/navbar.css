@@ -70,6 +70,13 @@ nav button{
     font-size: 15px;
 }
 
+.login-options-container{
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+}
+
 .login-options-container:hover .login-options{
     display: flex;
 }
@@ -104,6 +111,10 @@ nav button{
 
     .nav-right .search-container input{
         width: 30vw;
+    }
+
+    .login-options-container span,.login-options-container button{
+        font-size: 13px;
     }
     
 }
