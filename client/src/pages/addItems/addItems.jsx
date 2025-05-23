@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
 import "./addItems.css";
+import { AppContext } from "../../context/AppContext";
 
 export default function AddItems({ setProducts }) {
   const [image, setImage] = useState(false);
@@ -8,9 +9,12 @@ export default function AddItems({ setProducts }) {
     price: "",
   });
 
+  const {dashBoardOption,setDashBoardOption} = useContext(AppContext)
+
   const onChangeHandler = (e) => {
     setData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
+
   const formData = new FormData();
 
   formData.append("product", data["product"]);
@@ -26,6 +30,10 @@ export default function AddItems({ setProducts }) {
     });
     setImage(false);
   };
+
+  useEffect(() => {
+    setDashBoardOption("add");
+  }, []);
 
   return (
     <div className="add-items">

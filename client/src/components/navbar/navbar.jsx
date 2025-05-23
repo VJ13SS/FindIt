@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 export default function Navbar() {
   //<span>Sumangali furnitures</span>
 
-  const { displayLoginPopUp, setDisplayLoginPopUp,setUserLogin,setShopLogin,setCurrentState } = useContext(AppContext);
+  const { displayLoginPopUp, setDisplayLoginPopUp,setUserLogin,setShopLogin,setCurrentState,userDetails,setUserDetails } = useContext(AppContext);
   const navigate = useNavigate();
   const userLoginHandler = () => {
     setUserLogin(true)
@@ -21,28 +21,37 @@ export default function Navbar() {
     setCurrentState('login')
   }
 
+  const logOutHandler = () => {
+    setUserDetails({})
+    localStorage.removeItem('userDetails')
+    console.log(userDetails)
+  }
+
   return (
     <nav>
       <div className="nav-left">
         <img src="/Images/FindIt.svg" alt="" onClick={() => navigate("/")} />
       </div>
       <div className="nav-right">
+        
         <div className="search-container">
           <input type="text" placeholder="Find It" />
           <img src="/Images/search_icon.png" alt="" />
         </div>
 
+        
         <div className="login-options-container">
-          <span onClick={userLoginHandler}>User Login</span>
+        {localStorage.getItem("userDetails") ? <span>{userDetails.name}</span>:<><span onClick={userLoginHandler}>User Login</span>
           <span>/</span>
           <button className="log-in" onClick={shopLoginHandler}>
             Shop Login
-          </button>
+          </button></>}
           
-          <div className="login-options">
-            <span>Options</span>
-            <span className="log-out">LogOut</span>
-          </div>
+          {localStorage.getItem("userDetails") && <div className="login-options">
+            {userDetails.userType === "shop" ?  <span onClick={()=> navigate('/dashboard/add-items')}>Dashboard</span>: <span onClick={()=> navigate('/customer-bookings')}>Bookings</span>}
+            <span className="log-out" onClick={logOutHandler}>LogOut</span>
+          </div>}
+          
         </div>
       </div>
     </nav>

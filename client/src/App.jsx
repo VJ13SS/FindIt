@@ -16,9 +16,9 @@ import {ToastContainer,toast} from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css'
 
 export default function App() {
-  const { displayLoginPopUp, setDisplayLoginPopUp,displayBookingPopup } = useContext(AppContext);
+  const { displayLoginPopUp, setDisplayLoginPopUp,displayBookingPopup,userDetails } = useContext(AppContext);
   const [products,setProducts] = useState([])
-  console.log(products)
+  console.log(products,userDetails)
   return (
     <>
       {displayLoginPopUp ? (
@@ -36,7 +36,7 @@ export default function App() {
               <Route path="booking-orders" element={<Bookings />} />
               <Route path="events" element={<Events />} />
             </Route>
-            <Route path="/user-bookings" element={<UserBookings />} />
+            <Route path="/customer-bookings" element={<UserBookings />} />
           </Routes>
           
           <Footer />

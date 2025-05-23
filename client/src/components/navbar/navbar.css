@@ -68,6 +68,7 @@ nav button{
     font-weight: 400;
     color: black;
     font-size: 15px;
+    cursor: pointer;
 }
 
 .login-options-container{
@@ -75,6 +76,8 @@ nav button{
     gap: 5px;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
+    height: 100%;
 }
 
 .login-options-container:hover .login-options{

@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import "./loginPopUp.css";
 import { AppContext } from "../../context/AppContext";
-import axios from "axios"
+import axios from "axios";
 import { toast } from "react-toastify";
 
 export default function LoginPopUp() {
@@ -24,15 +24,53 @@ export default function LoginPopUp() {
   };
 
   const onSubmitHandler = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    if(userLogin){
-      if(currentState === 'sign-in'){
-        const response = await axios.post(backendUrl + '/api/user/sign-up',data)
+    if (userLogin) {
+      console.log("user");
+      if (currentState === "sign-in") {
+        const response = await axios.post(
+          backendUrl + "/api/user/sign-in",
+          data
+        );
+        console.log(response.data.message);
+      } else {
+        const response = await axios.post(backendUrl + "/api/user/login", data);
+        localStorage.setItem(
+          "userDetails",
+          JSON.stringify(response.data.userDetails)
+        );
+      }
+    } else {
+      if (currentState === "sign-in") {
+        const formData = new FormData();
+        //{name,email,password,address,city,contact}
+        formData.append("name", data.name);
+        formData.append("email", data.email);
+        formData.append("password", data.password);
+        formData.append("address", data.address);
+        formData.append("city", data.city);
+        formData.append("contact", data.contact_number);
+        formData.append("image", image);
+        console.log(image);
+        const response = await axios.post(
+          backendUrl + "/api/shop/sign-in",
+          formData
+        );
+        console.log(response.data.message);
+      } else {
+        const response = await axios.post(backendUrl + "/api/shop/login", data);
+        localStorage.setItem(
+          "userDetails",
+          JSON.stringify(response.data.userDetails)
+        );
       }
     }
-    
-  }
+
+    setShopLogin(false);
+    setUserLogin(false);
+    setDisplayLoginPopUp(false);
+  };
 
   return (
     <div className="login-popup-container">
@@ -43,10 +81,19 @@ export default function LoginPopUp() {
           alt=""
           onClick={() => setDisplayLoginPopUp(false)}
         />
+        <span>
+          {userLogin
+            ? currentState === "sign-in"
+              ? "User SignIn"
+              : "User LogIn"
+            : currentState === "sign-in"
+            ? "Register Your Shop"
+            : "Shop Login"}
+        </span>
         {currentState === "sign-in" && (
           <input
             type="text"
-            placeholder={userLogin ?'Name of User: ':"Name of the Shop: "}
+            placeholder={userLogin ? "Name of User: " : "Name of the Shop: "}
             name="name"
             required
             onChange={(e) => onChangeHandler(e)}
@@ -114,7 +161,6 @@ export default function LoginPopUp() {
                 onChange={(e) => setImage(e.target.files[0])}
                 hidden
               />
-              
             </div>
           </>
         )}
@@ -132,12 +178,10 @@ export default function LoginPopUp() {
         )}
 
         <p>
-        <input type="checkbox" name="" id="" required />
-          I am agreeing to all terms and conditions
+          <input type="checkbox" name="" id="" required />I am agreeing to all
+          terms and conditions
         </p>
-        <button>
-          {currentState === "login" ? "Login" : "Sign In"}
-        </button>
+        <button>{currentState === "login" ? "Login" : "Sign In"}</button>
       </form>
     </div>
   );

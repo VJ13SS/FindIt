@@ -1,6 +1,11 @@
 import userModel from "../models/user.js";
 import validator from "validator";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+
+const createToken = (id) => {
+  return jwt.sign({ id }, "random#secret");
+};
 
 export const registerUser = async (req, res) => {
   const { name, email, password } = req.body;
@@ -42,6 +47,38 @@ export const registerUser = async (req, res) => {
     await newUser.save();
     console.log("Registered new user");
     return res.json({ success: true, message: "Registered New User" });
+  } catch (error) {
+    console.log(error.message);
+    return res.json({ success: false, message: error.message });
+  }
+};
+
+export const loginUser = async (req, res) => {
+  const { email, password } = req.body;
+  
+
+  try {
+    if (!validator.isEmail(email)) {
+      return res.json({ success: false, message: "Invalid Email" });
+    }
+
+    const user = await userModel.findOne({ email });
+
+    if (!user) {
+      
+      return res.json({ success: false, message: "User Dosent Exists" });
+    }
+
+    const isMatch = bcrypt.compare(password, user.password);
+
+    if (!isMatch) {
+      return res.json({ success: false, message: "Password dosent match" });
+    }
+
+    const token = createToken(user._id); //create a token for the logged in user
+    const userDetails = { token, user, userType: "customer" };
+
+    return res.json({ success: true, userDetails });
   } catch (error) {
     console.log(error.message);
     return res.json({ success: false, message: error.message });

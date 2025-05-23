@@ -10,6 +10,6 @@ const shopSchema = mongoose.Schema({
     image:{type:String,required:true},
 })
 
-const shopModel = mongoose.models('shop') || mongoose.model('shop',shopSchema)
+const shopModel = mongoose.models.shop || mongoose.model('shop',shopSchema)
 
 export default shopModel

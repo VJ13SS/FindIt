@@ -6,6 +6,7 @@
 }
 
 .dashboard-left{
+    padding-top: 20px;
     border-right: 1px solid gray;
     cursor: pointer;
 }
