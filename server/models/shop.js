@@ -7,6 +7,7 @@ const shopSchema = mongoose.Schema({
     address:{type:String,required:true},
     contact:{type:Number,required:true,unique:true},
     city:{type:String,required:true},
+    description:{type:String,default:"Welcome All"},
     image:{type:String,required:true},
 })
 

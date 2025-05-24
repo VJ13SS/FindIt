@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 const eventSchema = new mongoose.Schema({
   image: { type: String, required: true },
   description: { type: String, required: true },
+  status:{type:String,default:'visible'},
   shopId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "shop",

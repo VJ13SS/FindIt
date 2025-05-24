@@ -10,7 +10,7 @@ export const AppContextProvider = (props) => {
   const [shopLogin, setShopLogin] = useState(false);
   const backendUrl = "http://localhost:5000";
   const [userDetails, setUserDetails] = useState({});
-  const [dashBoardOption,setDashBoardOption] = useState('add')
+  const [dashBoardOption, setDashBoardOption] = useState("add");
 
   useEffect(() => {
     if (localStorage.getItem("userDetails")) {
@@ -25,6 +25,10 @@ export const AppContextProvider = (props) => {
         image: JSON.parse(localStorage.getItem("userDetails")).user.image,
         name: JSON.parse(localStorage.getItem("userDetails")).user.name,
         userType: JSON.parse(localStorage.getItem("userDetails")).userType,
+        description: JSON.parse(localStorage.getItem("userDetails")).user
+          .description
+          ? JSON.parse(localStorage.getItem("userDetails")).user.description
+          : "",
       }));
     }
   }, [localStorage.getItem("userDetails")]);
@@ -43,7 +47,8 @@ export const AppContextProvider = (props) => {
     backendUrl,
     userDetails,
     setUserDetails,
-    dashBoardOption,setDashBoardOption
+    dashBoardOption,
+    setDashBoardOption,
   };
 
   return (

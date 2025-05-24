@@ -24,7 +24,7 @@ export default function Navbar() {
   const logOutHandler = () => {
     setUserDetails({})
     localStorage.removeItem('userDetails')
-    console.log(userDetails)
+    navigate('/')
   }
 
   return (

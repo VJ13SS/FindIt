@@ -1,13 +1,22 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "./events.css";
+import { AppContext } from "../../context/AppContext";
+import axios from 'axios'
 
 export default function Events() {
   const [eventDescription, setEventDescription] = useState("");
   const [image, setImage] = useState(false);
+  const {backendUrl,userDetails} = useContext(AppContext)
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault()
-    console.log(eventDescription)
+    const formData = new FormData()
+
+    formData.append('image',image)
+    formData.append('description',eventDescription)
+
+    const response = await axios.post(backendUrl  + '/api/shop/add-event',formData,{headers:{token:userDetails.token}})
+    console.log(response.data)
     setImage(false)
     setEventDescription('')
   }

@@ -34,12 +34,18 @@ export default function LoginPopUp() {
           data
         );
         console.log(response.data.message);
+        setCurrentState("login");
       } else {
         const response = await axios.post(backendUrl + "/api/user/login", data);
-        localStorage.setItem(
-          "userDetails",
-          JSON.stringify(response.data.userDetails)
-        );
+        if (response.data.userDetails) {
+          localStorage.setItem(
+            "userDetails",
+            JSON.stringify(response.data.userDetails)
+          );
+          setShopLogin(false);
+          setUserLogin(false);
+          setDisplayLoginPopUp(false);
+        }
       }
     } else {
       if (currentState === "sign-in") {
@@ -58,18 +64,23 @@ export default function LoginPopUp() {
           formData
         );
         console.log(response.data.message);
+        setCurrentState("login");
       } else {
         const response = await axios.post(backendUrl + "/api/shop/login", data);
-        localStorage.setItem(
-          "userDetails",
-          JSON.stringify(response.data.userDetails)
-        );
+        if (response.data.userDetails) {
+          localStorage.setItem(
+            "userDetails",
+            JSON.stringify(response.data.userDetails)
+          );
+
+          setShopLogin(false);
+          setUserLogin(false);
+          setDisplayLoginPopUp(false);
+        } else {
+          alert("User Not Available");
+        }
       }
     }
-
-    setShopLogin(false);
-    setUserLogin(false);
-    setDisplayLoginPopUp(false);
   };
 
   return (

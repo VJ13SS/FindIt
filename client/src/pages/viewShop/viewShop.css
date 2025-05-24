@@ -34,18 +34,8 @@
     max-width: 90%;
 }
 
-.available,.not-available{
-    padding: 5px;
-    border-radius: 5px;
-}
 
-.available{
-    background-color: rgb(14, 240, 14);
-}
 
-.not-available{
-    background-color: red;
-}
 
 .view-shop button{
     padding: 10px;

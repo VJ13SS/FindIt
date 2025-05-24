@@ -48,3 +48,14 @@ table th,table td{
   padding: 5px;
 }
 
+.available{
+  color:blue;
+}
+
+.not-available{
+  color: red;
+}
+
+.hide{
+  color:brown;
+}

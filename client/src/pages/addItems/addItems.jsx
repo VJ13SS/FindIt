@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import "./addItems.css";
 import { AppContext } from "../../context/AppContext";
+import axios from "axios";
 
 export default function AddItems({ setProducts }) {
   const [image, setImage] = useState(false);
@@ -9,7 +10,7 @@ export default function AddItems({ setProducts }) {
     price: "",
   });
 
-  const {dashBoardOption,setDashBoardOption} = useContext(AppContext)
+  const {dashBoardOption,setDashBoardOption,backendUrl,userDetails} = useContext(AppContext)
 
   const onChangeHandler = (e) => {
     setData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -19,10 +20,13 @@ export default function AddItems({ setProducts }) {
 
   formData.append("product", data["product"]);
   formData.append("price", data["price"]);
-  formData.append("product_image", image);
+  formData.append("image", image);
 
-  const onSubmitHandler = (e) => {
+  const onSubmitHandler = async (e) => {
     e.preventDefault();
+
+    const response = await axios.post(backendUrl + '/api/shop/add-product',formData,{headers:{token:userDetails.token}})
+    console.log(response.data)
     setProducts((prev) => [...prev, formData]);
     setData({
       product: "",

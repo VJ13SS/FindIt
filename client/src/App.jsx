@@ -18,7 +18,6 @@ import 'react-toastify/dist/ReactToastify.css'
 export default function App() {
   const { displayLoginPopUp, setDisplayLoginPopUp,displayBookingPopup,userDetails } = useContext(AppContext);
   const [products,setProducts] = useState([])
-  console.log(products,userDetails)
   return (
     <>
       {displayLoginPopUp ? (
