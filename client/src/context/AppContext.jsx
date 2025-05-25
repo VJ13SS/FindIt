@@ -10,7 +10,8 @@ export const AppContextProvider = (props) => {
   const [shopLogin, setShopLogin] = useState(false);
   const backendUrl = "http://localhost:5000";
   const [userDetails, setUserDetails] = useState({});
-  const [dashBoardOption, setDashBoardOption] = useState("add");
+  const [dashBoardOption, setDashBoardOption] = useState("add-items");
+
 
   useEffect(() => {
     if (localStorage.getItem("userDetails")) {

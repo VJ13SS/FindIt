@@ -139,3 +139,73 @@ export const getProducts = async (req, res) => {
     return res.json({ success: false, message: error.message });
   }
 };
+
+export const changeProductStatus = async (req, res) => {
+  try {
+    const { product_id, status } = req.body;
+
+    await productModel.findByIdAndUpdate({ _id: product_id }, { status });
+    console.log("Product Status Updated Successfully");
+    return res.json({
+      success: true,
+      message: "Product Status Updated Successfully",
+    });
+  } catch (error) {
+    console.log(error.message);
+    return res.json({ success: false, message: error.message });
+  }
+};
+
+export const getEvents = async (req, res) => {
+  try {
+    const shopId = req.shop._id;
+    const events = await eventModel.find({ shopId });
+    return res.json({ success: true, events });
+  } catch (error) {
+    console.log(error.message);
+    return res.json({ success: false, message: error.message });
+  }
+};
+
+export const changeEventStatus = async (req, res) => {
+  try {
+    const { event_id, status } = req.body;
+
+    await eventModel.findByIdAndUpdate({ _id: event_id }, { status: status });
+    console.log("Event Status Updated Successfully");
+    return res.json({
+      success: true,
+      message: "Event Status Updated Successfully",
+    });
+  } catch (error) {
+    console.log(error.message);
+    return res.json({ success: false, message: error.message });
+  }
+};
+
+export const getAllShops = async (req, res) => {
+  try {
+    const shops = await shopModel.find({});
+
+    return res.json({ success: true, shops });
+  } catch (error) {
+    console.log(error.message);
+    return res.json({ success: false, message: error.message });
+  }
+};
+
+export const getShopById = async (req, res) => {
+  const { shopId } = req.body;
+
+  try {
+    const shop = await shopModel.findOne({_id:shopId });
+    const products = await productModel.find({ shopId });
+    const events = await eventModel.find({ shopId });
+    const shopDetails = { shop, products, events };
+
+    return res.json({ success: true, shopDetails });
+  } catch (error) {
+    console.log(error.message);
+    return res.json({ success: false, message: error.message });
+  }
+};

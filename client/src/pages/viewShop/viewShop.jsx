@@ -1,14 +1,23 @@
 import { useParams } from "react-router-dom";
 import "./viewShop.css";
 import productsData from "./shopProducts";
-import { useContext,useState } from "react";
+import { useContext,useEffect,useState } from "react";
 import { AppContext } from "../../context/AppContext";
+import axios from "axios";
 
 export default function ViewShop() {
   const { id } = useParams();
-  const {displayBookingPopup,setDisplayBookingPopup} = useContext(AppContext)
+  const {backendUrl} = useContext(AppContext)
 
   const [bookItems,setBookedItems] = useState([])
+
+  const getShopdetails = async () => {
+    const response = await axios.post(backendUrl + '/api/shop/get-shop-by-id',{shopId:id})
+    console.log(response)
+  }
+  useEffect(()=>{
+    getShopdetails()
+  },[])
   
   return (
     <div className="view-shop">
