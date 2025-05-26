@@ -1,4 +1,6 @@
 import { createContext, useEffect, useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export const AppContext = createContext();
 
@@ -11,7 +13,31 @@ export const AppContextProvider = (props) => {
   const backendUrl = "http://localhost:5000";
   const [userDetails, setUserDetails] = useState({});
   const [dashBoardOption, setDashBoardOption] = useState("add-items");
+  const [searchItem, setSearchItem] = useState("");
+  const navigate = useNavigate()
+  const [shops, setShops] = useState([]);
 
+  const searchTypedItem = async () => {
+    const response = await axios.post(backendUrl + '/api/user/search' ,{searchedItem:searchItem})
+    if (response.data.success) {
+      setShops(response.data.results);
+    } else {
+      alert(response.data.message);
+      console.log(response.data.message)
+    }
+    navigate('/')
+    setSearchItem('')
+  }
+
+  
+    const getAllShops = async () => {
+      const response = await axios.get(backendUrl + "/api/shop/get-all-shops");
+      if (response.data.success) {
+        setShops(response.data.shops);
+      } else {
+        console.log(response.data.message);
+      }
+    };
 
   useEffect(() => {
     if (localStorage.getItem("userDetails")) {
@@ -50,6 +76,10 @@ export const AppContextProvider = (props) => {
     setUserDetails,
     dashBoardOption,
     setDashBoardOption,
+    searchItem,
+    setSearchItem,
+    searchTypedItem,
+    shops,setShops,getAllShops
   };
 
   return (

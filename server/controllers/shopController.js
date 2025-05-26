@@ -196,13 +196,16 @@ export const getAllShops = async (req, res) => {
 
 export const getShopById = async (req, res) => {
   const { shopId } = req.body;
-
+  
   try {
     const shop = await shopModel.findOne({_id:shopId });
-    const products = await productModel.find({ shopId });
-    const events = await eventModel.find({ shopId });
-    const shopDetails = { shop, products, events };
-
+    const shopProducts = await productModel.find({ shopId });
+    const displayProducts = shopProducts.filter(product => product.status != "Hidden")
+    
+    const shopEvents = await eventModel.find({ shopId });
+    const displayEvents = shopEvents.filter(event => event.status != "Hidden")
+    const shopDetails = { shop, displayProducts, displayEvents };
+   
     return res.json({ success: true, shopDetails });
   } catch (error) {
     console.log(error.message);

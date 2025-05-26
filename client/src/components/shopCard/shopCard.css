@@ -11,10 +11,12 @@
     border-radius: 5px;
     padding: 5px;
     border: 1px solid gray;
+    min-height: 150px;
+    gap: 15px;
 }
 
 .shop-card img{
-    width: 250px;
+    width: 150px;
 }
 
 .shop-details{

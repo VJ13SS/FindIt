@@ -1,54 +1,78 @@
-.view-shop{
-    min-height: 80vh;
-    padding: 30px;
-    font-weight: 500;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 20px;
-    color: rgb(57, 55, 55);
+.view-shop {
+  width: 100%;
+  min-height: 80vh;
+  padding: 30px;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  color: rgb(57, 55, 55);
 }
-.shop-header{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
-    background: linear-gradient(to right,rgb(210, 218, 220),rgb(145, 210, 243));
-    margin-bottom: 30px;
-    width: 100%;
-}
-
-.shop-header img{
-    width: 200px;
-    border-radius: 10px;
+.shop-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  background: linear-gradient(to right, rgb(210, 218, 220), rgb(145, 210, 243));
+  margin-bottom: 10px;
+  width: 100%;
+  min-height: 250px;
 }
 
-.shop-header .header-data{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.shop-header img {
+  width: 200px;
+  border-radius: 10px;
 }
 
-.shop-description{
-    max-width: 90%;
+.shop-header .header-data {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-
-
-
-.view-shop button{
-    padding: 10px;
-    background-color: rgb(0, 153, 255);
-    border: 1px solid gray;
-    cursor: pointer;
-    border-radius: 5px;
-    color: white;
-    font-weight: 500;
+.shop-description {
+  max-width: 90%;
 }
 
-@media(max-width:800px){
-    .view-shop table{
-        width: 80vw;
-    }
+.shop-items {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 35px;
+  width: 100%;
+}
+
+.shop-events {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  min-width: 90%;
+  max-width: 95%;
+  overflow-x: scroll;
+}
+.view-shop table {
+  width: 80vw;
+}
+
+.view-shop table img {
+  width: 35px;
+}
+
+.view-shop button {
+  padding: 10px;
+  background-color: rgb(0, 153, 255);
+  border: 1px solid gray;
+  cursor: pointer;
+  border-radius: 5px;
+  color: white;
+  font-weight: 500;
+}
+
+@media (max-width: 800px) {
+  .view-shop table {
+    width: 80vw;
+  }
 }

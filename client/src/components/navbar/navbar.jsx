@@ -3,10 +3,11 @@ import { AppContext } from "../../context/AppContext";
 import "./navbar.css";
 import { useNavigate } from "react-router-dom";
 
+
 export default function Navbar() {
   //<span>Sumangali furnitures</span>
 
-  const { displayLoginPopUp, setDisplayLoginPopUp,setUserLogin,setShopLogin,setCurrentState,userDetails,setUserDetails } = useContext(AppContext);
+  const { searchTypedItem,searchItem,setSearchItem,setDisplayLoginPopUp,setUserLogin,setShopLogin,setCurrentState,userDetails,setUserDetails,backendUrl } = useContext(AppContext);
   const navigate = useNavigate();
   const userLoginHandler = () => {
     setUserLogin(true)
@@ -27,6 +28,8 @@ export default function Navbar() {
     navigate('/')
   }
 
+  
+
   return (
     <nav>
       <div className="nav-left">
@@ -35,8 +38,9 @@ export default function Navbar() {
       <div className="nav-right">
         
         <div className="search-container">
-          <input type="text" placeholder="Find It" />
-          <img src="/Images/search_icon.png" alt="" />
+          <input type="text" placeholder="Find It" onChange={(e)=>setSearchItem(e.target.value)} value={searchItem}/>
+          <a href="#shops">
+          <img src="/Images/search_icon.png" alt="" onClick={()=>searchTypedItem(searchItem)}/></a>
         </div>
 
         
