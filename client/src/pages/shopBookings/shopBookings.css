@@ -1,0 +1,17 @@
+.shop-bookings,.booked-orders,.booked-order{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    
+}
+.shop-bookings{
+    width: 70vw;
+    height: 90vh;
+}
+
+.booked-order{
+    border: 1px solid gray;
+    width: 90%;
+    padding: 5px;
+    border-radius: 5px;
+}

@@ -4,6 +4,7 @@ import validator from "validator";
 import shopModel from "../models/shop.js";
 import productModel from "../models/products.js";
 import eventModel from "../models/events.js";
+import bookingModel from "../models/bookings.js";
 
 const createToken = (id) => {
   return jwt.sign({ id }, "random#secret");
@@ -212,3 +213,29 @@ export const getShopById = async (req, res) => {
     return res.json({ success: false, message: error.message });
   }
 };
+
+export const getAllBookingOrders = async (req,res) => {
+  try {
+    const shopId = req.shop._id
+    const bookingOrders = await bookingModel.find({shopId})
+
+    return res.json({success:true,bookingOrders})
+  } catch (error) {
+    console.log(error.message)
+    return res.json({success:false,message:error.message})
+  }
+}
+
+export const changeBookingOrderStatus = async (req,res) => {
+  try {
+    const {bookingId,status} = req.body
+
+    await bookingModel.findByIdAndUpdate({_id:bookingId},{status})
+    console.log('Booking Order status updated successfully')
+
+    return res.json({success:true,message:'Booking Order status updated successfully'})
+  } catch (error) {
+    console.log(error.message)
+    return res.json({success:false,message:error.message})
+  }
+}

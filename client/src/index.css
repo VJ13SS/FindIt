@@ -63,3 +63,25 @@ table th,table td{
 .visible{
   color: green;
 }
+
+.accepted{
+  background-color: rgb(122, 255, 122);
+  padding: 3px;
+  width: fit-content;
+  border-radius: 5px;
+}
+
+.rejected{
+  background-color: rgb(237, 72, 72);
+  width: fit-content;
+  padding: 3px;
+  border-radius: 5px;
+}
+
+.pending{
+  background-color: rgb(241, 249, 10);
+  color: black;
+  width: fit-content;
+  padding: 3px;
+  border-radius: 5px;
+}

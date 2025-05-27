@@ -7,9 +7,9 @@ import EventCard from "../../components/eventCard/eventCard";
 
 export default function ViewShop() {
   const { id } = useParams();
-  const { backendUrl } = useContext(AppContext);
+  const { backendUrl, userDetails } = useContext(AppContext);
 
-  const [bookItems, setBookedItems] = useState([]);
+  const [bookedItems, setBookedItems] = useState([]);
   const [shopDetails, setShopDetails] = useState({});
   const [shopProducts, setShopProducts] = useState([]);
   const [shopEvents, setShopEvents] = useState([]);
@@ -35,6 +35,18 @@ export default function ViewShop() {
     }
   };
 
+  const bookItemsHandler = async () => {
+    if (!localStorage.getItem("userDetails")) {
+      alert("Please Login....!");
+    } else {
+      const response = await axios.post(backendUrl + '/api/user/book-items',{bookedItems,userDetails,shopId:id} )
+      alert(response.data.message)
+      console.log(response.data.message)
+    }
+
+    setBookedItems([])
+  };
+
   useEffect(() => {
     getShopdetails(id);
   }, []);
@@ -53,66 +65,73 @@ export default function ViewShop() {
       {/*Shop Description */}
       <p className="shop-description">{shopDetails.description}</p>
       <div className="shop-items">
-      {shopEvents.length > 0 && <div className="shop-events">
-          {shopEvents.map((event,indx) => (<EventCard event={event} key={indx} />))}
-        </div>}
-        {shopProducts.length > 0 ? 
-        <table>
-          <thead>
-            <tr>
-              <th>Image</th>
-              <th>Product Name</th>
-              <th>Product Price</th>
-              <th>Status</th>
-              <th>Book Item</th>
-            </tr>
-          </thead>
-          <tbody>
-            {shopProducts.map((product, indx) => (
-              <tr key={indx}>
-                <td>
-                  <img src={backendUrl + "/files/" + product.image} alt="" />
-                </td>
-                <td>
-                  <span>{product.name}</span>
-                </td>
-                <td>
-                  <span>{product.price}</span>
-                </td>
-                <td>
-                  <span
-                    className={
-                      product.status === "Available"
-                        ? "available"
-                        : "not-available"
-                    }
-                  >
-                    {product.status}
-                  </span>
-                </td>
-                <td>
-                  {product.status === "Available" ? (
-                    <input
-                      type="checkbox"
-                      onChange={() =>
-                        setBookedItems((prev) => [...prev, product.name])
-                      }
-                    />
-                  ) : (
-                    <span>...</span>
-                  )}
-                </td>
-              </tr>
+        {shopEvents.length > 0 && (
+          <div className="shop-events">
+            {shopEvents.map((event, indx) => (
+              <EventCard event={event} key={indx} />
             ))}
-          </tbody>
-        </table>:<span>No Products Available</span>}
-        
-        
+          </div>
+        )}
+        {shopProducts.length > 0 ? (
+          <table>
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Product Name</th>
+                <th>Product Price</th>
+                <th>Status</th>
+                <th>Book Item</th>
+              </tr>
+            </thead>
+            <tbody>
+              {shopProducts.map((product, indx) => (
+                <tr key={indx}>
+                  <td>
+                    <img src={backendUrl + "/files/" + product.image} alt="" />
+                  </td>
+                  <td>
+                    <span>{product.name}</span>
+                  </td>
+                  <td>
+                    <span>{product.price}</span>
+                  </td>
+                  <td>
+                    <span
+                      className={
+                        product.status === "Available"
+                          ? "available"
+                          : "not-available"
+                      }
+                    >
+                      {product.status}
+                    </span>
+                  </td>
+                  <td>
+                    {product.status === "Available" ? (
+                      <input
+                        type="checkbox"
+                        onChange={() =>
+                          setBookedItems((prev) => [...prev, product.name])
+                        }
+
+                        checked ={bookedItems.includes(product.name)}
+                      />
+                    ) : (
+                      <span>...</span>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <span>No Products Available</span>
+        )}
       </div>
 
-      <button onClick={() => console.log(bookItems)}>
-        Book Your Products?
-      </button>
+      {bookedItems.length > 0 && (
+        <button onClick={bookItemsHandler}>Book Your Products?</button>
+      )}
     </div>
   );
 }

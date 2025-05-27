@@ -2,8 +2,10 @@ import express from "express";
 import {
   addProduct,
   addShopEvents,
+  changeBookingOrderStatus,
   changeEventStatus,
   changeProductStatus,
+  getAllBookingOrders,
   getAllShops,
   getEvents,
   getProducts,
@@ -36,5 +38,7 @@ shopRouter.get("/get-events", authMiddleware, getEvents);
 shopRouter.post("/update-event-status", changeEventStatus);
 shopRouter.get("/get-all-shops", getAllShops);
 shopRouter.post("/get-shop-by-id", getShopById);
+shopRouter.get("/get-all-booking-orders",authMiddleware,getAllBookingOrders)
+shopRouter.post('/change-booking-order-status',changeBookingOrderStatus)
 
 export default shopRouter;

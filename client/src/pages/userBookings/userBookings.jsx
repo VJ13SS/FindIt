@@ -1,6 +1,7 @@
 import "./userBookings.css";
 import userBookingsData from "./userBookingsData";
 
+//for displaying the booking orders of registered users
 export default function UserBookings() {
   return (
     <div className="user-bookings-container">

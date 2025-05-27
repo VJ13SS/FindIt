@@ -4,6 +4,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import shopModel from "../models/shop.js";
 import productModel from "../models/products.js";
+import bookingModel from "../models/bookings.js";
 
 const createToken = (id) => {
   return jwt.sign({ id }, "random#secret");
@@ -103,8 +104,8 @@ export const searchItem = async (req, res) => {
         $or: [{ name: regex }],
       })
       .populate({ path: "shopId", select: "-password" });
-    
-      //filter the seacrh results so that only the items withs staus not equals hidden will be visible
+
+    //filter the seacrh results so that only the items withs staus not equals hidden will be visible
     resultantProducts = resultantProducts.filter(
       (product) => product.status != "Hidden"
     );
@@ -115,17 +116,57 @@ export const searchItem = async (req, res) => {
     //concatenating both the results
     let results = resultantShops.concat(resultantProducts);
 
-    const visited = new Set()
-    results = results.filter(item => {
-      if(visited.has(item._id)){
-        return false
-      }else{
-        visited.add(item._id)
-        return true
+    const visited = new Set();
+    results = results.filter((item) => {
+      if (visited.has(item._id)) {
+        return false;
+      } else {
+        visited.add(item._id);
+        return true;
       }
-    })
+    });
 
     return res.json({ success: true, results });
+  } catch (error) {
+    console.log(error.message);
+    return res.json({ success: false, message: error.message });
+  }
+};
+
+export const bookItems = async (req, res) => {
+  const { bookedItems, userDetails, shopId } = req.body;
+
+  try {
+    const shop = await shopModel.findOne({ _id: shopId });
+    const newBooking = new bookingModel({
+      userName: userDetails.name,
+      userEmail: userDetails.email,
+      userContact: userDetails.contact,
+      items: bookedItems,
+      shopId: shopId,
+      shopName: shop.name,
+      shopEmail: shop.email,
+      shopContact: shop.contact,
+      shopImage: shop.image,
+    });
+
+    await newBooking.save();
+
+    console.log("New Booking Registered Successfully");
+    return res.json({ success: true, message: "Order booked successfully" });
+  } catch (error) {
+    console.log(error.message);
+    return res.json({ success: false, message: error.message });
+  }
+};
+
+export const getBookedOrders = async (req, res) => {
+  try {
+    const { userEmail } = req.body;
+
+    const bookedOrders = await bookingModel.find({ userEmail: userEmail });
+
+    return res.json({ success: true, bookedOrders });
   } catch (error) {
     console.log(error.message);
     return res.json({ success: false, message: error.message });
