@@ -1,26 +1,57 @@
+import { useContext, useEffect, useState } from "react";
 import "./userBookings.css";
 import userBookingsData from "./userBookingsData";
+import { AppContext } from "../../context/AppContext";
+import axios from "axios";
+import moment from "moment"
 
 //for displaying the booking orders of registered users
 export default function UserBookings() {
+  const [userBookings, setUserBookings] = useState([]);
+  const { backendUrl, userDetails } = useContext(AppContext);
+
+  const getBookingOrders = async () => {
+    const response = await axios.post(
+      backendUrl + "/api/user/get-booked-orders",
+      { userEmail: userDetails.email }
+    );
+
+    if (response.data.success) {
+      setUserBookings(response.data.bookedOrders);
+    }
+  };
+
+  useEffect(() => {
+    getBookingOrders();
+  }, []);
+
+  console.log(userBookings);
   return (
     <div className="user-bookings-container">
       <h2>Your Bookings</h2>
       <div className="user-bookings">
-        {userBookingsData.map((booking, indx) => (
-          <div className="user-booking">
-            <span>Shop : {booking.shop}</span>
-            <span>Location : {booking.location}</span>
-            <span>Contact : {booking.phone}</span>
-            <span>Products: </span>
-            <div className="booked-products">
-              {booking.products.map((product) => (
-                <span>{product} ,</span>
-              ))}
-            </div>
-            <span className={`${booking.staus === "accepted" ? "accepted" :"rejected"}`}>Booking {booking.staus}</span>
+        {userBookings.map((booking, indx) => (
+          <div className="booked-order" key={indx}>
+            
+            <span>Shop Name : {booking.shopName}</span>
+            <span>Shop Email : {booking.shopEmail}</span>
+            <span>Shop Contact : {booking.shopContact}</span>
+           
+            <p> Items : {booking.items}</p>
+            <span>Booked {moment(booking.date).fromNow()}</span>
+            <span
+              className={`${
+                booking.status === "Pending"
+                  ? "pending"
+                  : booking.status === "Accepted"
+                  ? "accepted"
+                  : "rejected"
+              }`}
+            >
+              
+              {booking.status}
+            </span>
           </div>
-          
         ))}
       </div>
     </div>

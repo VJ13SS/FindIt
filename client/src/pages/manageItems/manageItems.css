@@ -19,7 +19,7 @@
 }
 
 .product img {
-  width: 70px;
+  max-width: 50px;
 }
 
 .product {
@@ -27,6 +27,7 @@
   padding: 5px;
   width: 100%;
   position: relative;
+  min-height: 70px;
 }
 
 .product-options{
@@ -41,6 +42,7 @@
   right: 2px;
   background-color: white;
   cursor: pointer;
+  z-index: 10;
   font-size: 15px;
 }
 

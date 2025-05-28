@@ -11,7 +11,15 @@ export default function AddEvents() {
   const submitHandler = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-
+    if(!image){
+      alert('Upload Image')
+      return
+    }
+    if(eventDescription.length > 50){
+      alert('Event Description should be of 50 Characters')
+      
+      return
+    }
     formData.append("image", image);
     formData.append("description", eventDescription);
 
@@ -20,7 +28,7 @@ export default function AddEvents() {
       formData,
       { headers: { token: userDetails.token } }
     );
-    console.log(response.data);
+    alert(response.data.message);
     setImage(false);
     setEventDescription("");
   };
@@ -45,14 +53,18 @@ export default function AddEvents() {
           onChange={(e) => setImage(e.target.files[0])}
         />
         <span>Event Description</span>
-        <textarea
-          name=""
-          placeholder="Event Description : "
-          id=""
-          required
-          onChange={(e) => setEventDescription(e.target.value)}
-          value={eventDescription}
-        />
+        <div className="event-description">
+          <span className={`event-description-header ${eventDescription.length > 50 ? 'limit-exceeded' :''}`}>{eventDescription.length}/50</span>
+          <textarea
+            name=""
+            placeholder="Max 50 Characters : "
+            id=""
+            required
+            onChange={(e) => setEventDescription(e.target.value)}
+            value={eventDescription}
+          />
+        </div>
+
         <button onClick={(e) => submitHandler(e)}>Add Event</button>
       </form>
     </div>

@@ -27,7 +27,7 @@ export default function LoginPopUp() {
     e.preventDefault();
 
     if (userLogin) {
-      console.log("user");
+    
       if (currentState === "sign-in") {
         const response = await axios.post(
           backendUrl + "/api/user/sign-in",
@@ -37,7 +37,7 @@ export default function LoginPopUp() {
         setCurrentState("login");
       } else {
         const response = await axios.post(backendUrl + "/api/user/login", data);
-        if (response.data.userDetails) {
+        if (response.data.success) {
           localStorage.setItem(
             "userDetails",
             JSON.stringify(response.data.userDetails)
@@ -45,6 +45,9 @@ export default function LoginPopUp() {
           setShopLogin(false);
           setUserLogin(false);
           setDisplayLoginPopUp(false);
+        }
+        else{
+          alert(response.data.message)
         }
       }
     } else {
@@ -117,6 +120,16 @@ export default function LoginPopUp() {
           required
           onChange={(e) => onChangeHandler(e)}
         />
+        {currentState === "sign-in" && (
+          <input
+          type="number"
+          name="contact_number"
+          id=""
+          onChange={(e) => onChangeHandler(e)}
+          required
+          placeholder="Contact Number: "
+        />
+        )}
         <input
           onChange={(e) => onChangeHandler(e)}
           type="password"
@@ -144,14 +157,7 @@ export default function LoginPopUp() {
               onChange={(e) => onChangeHandler(e)}
               name="city"
             />
-            <input
-              type="number"
-              name="contact_number"
-              id=""
-              onChange={(e) => onChangeHandler(e)}
-              required
-              placeholder="Contact Number: "
-            />
+            
             <div className="img-upload">
               <label htmlFor="shop-image">
                 <img
@@ -187,11 +193,7 @@ export default function LoginPopUp() {
             <span onClick={() => setCurrentState("login")}>Login Here</span>
           </p>
         )}
-
-        <p>
-          <input type="checkbox" name="" id="" required />I am agreeing to all
-          terms and conditions
-        </p>
+        
         <button>{currentState === "login" ? "Login" : "Sign In"}</button>
       </form>
     </div>

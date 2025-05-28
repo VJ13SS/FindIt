@@ -3,7 +3,7 @@ import bookings from "./bookingsData";
 import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../context/AppContext";
 import axios from "axios";
-
+import moment from "moment"
 
 //for managing the booking oredrs of each shop
 export default function ManageBookingOrders() {
@@ -40,7 +40,7 @@ export default function ManageBookingOrders() {
       <div className="bookings-list">
         {bookingsData.map((booking, indx) => {
           return (
-            <div className="booking-order bookings-list-format">
+            <div className="booking-order bookings-list-format" key={indx}>
               <span>User : {booking.userName}</span>
               <span>Email : {booking.userEmail}</span>
               <span>Contact : {booking.userContact}</span>
@@ -48,6 +48,7 @@ export default function ManageBookingOrders() {
                 <span>Booked Items : </span>
                 {booking.items}
               </div>
+              <span>Booked {moment(booking.date).fromNow()}</span>
               {booking.status != 'Pending' ?<span className={`option ${booking.status === 'Accepted' ? 'accepted':'rejected'}`}>{booking.status}</span>
                 :
               <div className="options">

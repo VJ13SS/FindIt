@@ -1,48 +1,26 @@
-.user-bookings-container,.user-booking{
-    
-    display: flex;
-    flex-direction: column;
-    
+.user-bookings-container,
+.user-bookings,
+.booked-order {
+  display: flex;
+  flex-direction: column;
 }
 
-
-
-.user-bookings-container{
-    padding: 30px;
-    min-height: 90vh;
-    gap: 20px;
-    width: 100%;
+.user-bookings-container {
+  padding: 30px;
+  min-height: 90vh;
+  gap: 20px;
+  width: 100%;
 }
 
-.user-booking{
-    gap: 10px;
-    width: 80%;
-    margin-bottom: 15px;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid gray;
+.user-bookings {
+  gap: 20px;
+  width: 80%;
 }
 
-.user-booking span{
-    width: fit-content;
-    padding: 5px;
-    border-radius: 5px;
+.booked-order {
+  gap: 10px;
+  border: 1px solid gray;
+  width: 100%;
+  padding: 5px;
+  border-radius: 5px;
 }
-
-.booked-products{
-    max-width: 90%;
-}
-
-.booked-products span{
-    margin-right: 3px;
-}
-
-.accepted{
-    background-color: rgb(122, 255, 122);
-    border: 1px solid rgb(7, 203, 7);
-  }
-  
-  .rejected{
-    background-color: rgb(242, 162, 162);
-    border: 1px solid red;
-  }

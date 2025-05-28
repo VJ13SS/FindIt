@@ -23,3 +23,16 @@ form textarea {
   padding: 5px;
   resize: none;
 }
+
+.event-description{
+  display: flex;
+  flex-direction: column;
+}
+
+.event-description-header{
+  font-size: 10px;
+}
+
+.limit-exceeded{
+  color: red;
+}

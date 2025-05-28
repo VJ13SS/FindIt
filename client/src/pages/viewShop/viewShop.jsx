@@ -47,6 +47,19 @@ export default function ViewShop() {
     setBookedItems([])
   };
 
+  const onChangeHandler = (product) => {
+    if(bookedItems.includes(product)){
+      const removeIndx = bookedItems.indexOf(product)
+      const newList = [...bookedItems.slice(0,removeIndx),...bookedItems.slice(removeIndx + 1)]
+      setBookedItems(newList)
+    }
+    else{
+      setBookedItems((prev) => [...prev, product])
+                       
+    }
+    
+  }
+
   useEffect(() => {
     getShopdetails(id);
   }, []);
@@ -111,7 +124,8 @@ export default function ViewShop() {
                       <input
                         type="checkbox"
                         onChange={() =>
-                          setBookedItems((prev) => [...prev, product.name])
+
+                          onChangeHandler(product.name)
                         }
 
                         checked ={bookedItems.includes(product.name)}

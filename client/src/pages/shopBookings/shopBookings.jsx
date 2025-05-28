@@ -30,6 +30,7 @@ export default function ShopBookings() {
             <span>Shop Email : {booking.shopEmail}</span>
             <span>Shop Contact : {booking.shopContact}</span>
             <p> Items : {booking.items}</p>
+            
            <span className={`${booking.status === "Pending" ? 'pending' : booking.status === 'Accepted' ? 'accepted' :'rejected'}`}>{booking.status}</span>
             
           </div>

@@ -17,8 +17,9 @@
   gap: 40px;
   background: linear-gradient(to right, rgb(210, 218, 220), rgb(145, 210, 243));
   margin-bottom: 10px;
-  width: 100%;
+  width: 90vw;
   min-height: 250px;
+  border-radius: 10px;
 }
 
 .shop-header img {
@@ -51,6 +52,7 @@
   gap: 20px;
   min-width: 90%;
   max-width: 95%;
+  max-height: 20%;
   overflow-x: scroll;
 }
 .view-shop table {
@@ -75,4 +77,14 @@
   .view-shop table {
     width: 80vw;
   }
+
+  .shop-header{
+    flex-direction: column;
+  }
+
+  .shop-events{
+    flex-direction: column;
+    
+  }
+
 }

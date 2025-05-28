@@ -26,6 +26,10 @@ export default function AddItems({ setProducts }) {
   const onSubmitHandler = async (e) => {
     e.preventDefault();
 
+    if(!image){
+      alert('Upload Image')
+      return
+    }
     const response = await axios.post(
       backendUrl + "/api/shop/add-product",
       formData,

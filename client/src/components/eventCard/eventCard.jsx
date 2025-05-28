@@ -9,6 +9,7 @@ export default function EventCard ({event}){
         <div className="event-card">
             <img src={backendUrl + '/files/' + event.image} alt="" />
             <p>{event.description}</p>
+            
         </div>
     )
 }
