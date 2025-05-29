@@ -28,7 +28,7 @@ export default function ManageEvents() {
       }
     );
 
-    console.log(response.data.message)
+    console.log(response.data.message);
 
     getEvents();
   };
@@ -39,10 +39,10 @@ export default function ManageEvents() {
 
   return (
     <div className="manage-events">
-      <span>All Products</span>
+      <span>All Events</span>
 
       <div className="events-list">
-        <div className="header events-list-format">
+        <div className="event-header events-list-format">
           <span>Image</span>
           <span>Event Description</span>
           <span>Status</span>

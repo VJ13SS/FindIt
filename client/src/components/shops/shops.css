@@ -3,19 +3,20 @@
     padding: 10px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: 20px;
 }
 
 .shop-cards{
     display: flex;
-    gap: 20px;
     justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
+    gap: 20px;
+    
 }
 
-@media(max-width:950px){
+@media(max-width:650px){
     .shop-cards{
         flex-direction: column;
+        align-items: center;
     }
 }

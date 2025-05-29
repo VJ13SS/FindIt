@@ -34,7 +34,7 @@ export default function ManageBookingOrders() {
   },[])
 
   return (
-    <div className="bookings">
+    <div className="manage-bookings">
       <span>Booking Orders</span>
 
       <div className="bookings-list">

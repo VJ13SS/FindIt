@@ -18,8 +18,9 @@ import ManageBookingOrders from "./pages/manageBookingOrders/manageBookingOrders
 import ShopBookings from "./pages/shopBookings/shopBookings";
 
 export default function App() {
-  const { displayLoginPopUp, setDisplayLoginPopUp,displayBookingPopup,userDetails } = useContext(AppContext);
+  const { displayLoginPopUp } = useContext(AppContext);
   const [products,setProducts] = useState([])
+  
   return (
     <>
       {displayLoginPopUp ? (

@@ -33,7 +33,7 @@ export default function Navbar() {
   return (
     <nav>
       <div className="nav-left">
-        <img src="/Images/FindIt.svg" alt="" onClick={() => navigate("/")} />
+        <img src="/Images/FindItLogo.png" alt="" onClick={() => navigate("/")} />
       </div>
       <div className="nav-right">
         

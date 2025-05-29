@@ -219,7 +219,7 @@ export const getAllBookingOrders = async (req,res) => {
     const shopId = req.shop._id
     const bookingOrders = await bookingModel.find({shopId})
 
-    return res.json({success:true,bookingOrders})
+    return res.json({success:true,bookingOrders:bookingOrders.reverse()})
   } catch (error) {
     console.log(error.message)
     return res.json({success:false,message:error.message})

@@ -9,6 +9,7 @@
   flex-direction: column;
   gap: 20px;
   color: rgb(57, 55, 55);
+  flex-wrap: wrap;
 }
 .shop-header {
   display: flex;
@@ -24,6 +25,7 @@
 
 .shop-header img {
   width: 200px;
+  max-width: 200px;
   border-radius: 10px;
 }
 
@@ -52,8 +54,6 @@
   gap: 20px;
   min-width: 90%;
   max-width: 95%;
-  max-height: 20%;
-  overflow-x: scroll;
 }
 .view-shop table {
   width: 80vw;
@@ -73,7 +73,7 @@
   font-weight: 500;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
   .view-shop table {
     width: 80vw;
   }

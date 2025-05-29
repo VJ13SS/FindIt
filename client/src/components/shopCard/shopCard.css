@@ -6,10 +6,11 @@
 
 .shop-card{
     align-items: center;
-    width: 45vw;
+    justify-content:space-around ;
+    min-width: 30vw;
     box-shadow: 0px 2px 4px rgba(0,0,0,0.3);
     border-radius: 5px;
-    padding: 5px;
+    padding: 5px 10px;
     border: 1px solid gray;
     min-height: 150px;
     gap: 15px;
@@ -29,12 +30,13 @@
 
 @media(max-width:950px){
     .shop-card{
-        width: 80vw;
+        max-width: 70vw;
     }
 }
 
 @media(max-width:550px){
     .shop-card{
+        width: 80vw;
         flex-direction: column;
         
     }

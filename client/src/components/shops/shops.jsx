@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import ShopCard from "../shopCard/shopCard";
 import "./shops.css";
 import { AppContext } from "../../context/AppContext";
-import axios from "axios";
+
 
 export default function Shops() {
   const { getAllShops, shops, setShops, backendUrl } = useContext(AppContext);
@@ -13,7 +13,7 @@ export default function Shops() {
 
   return (
     <div className="shops" id="shops">
-      <h2>Shops Near You!</h2>
+      {shops.length > 0 ?<h2>Some Of Our Registered Shops!</h2>:<h2>Your Search Results</h2>}
       {shops.length > 0 ?
       <div className="shop-cards">
         {shops.map((shop, indx) => (

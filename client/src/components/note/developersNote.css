@@ -6,11 +6,12 @@
     padding: 20px;
     color: rgb(87, 85, 85);
     font-weight: 500;
+    font-size: 15px;
 }
 
 .developers-note{
     padding: 10px;
-    border: 5px solid rgb(145, 210, 243);
+    border: 3px solid rgb(145, 210, 243);
     border-radius: 10px;
     display: flex;
     flex-direction: column;

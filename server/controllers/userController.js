@@ -11,7 +11,7 @@ const createToken = (id) => {
 };
 
 export const registerUser = async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, password,contact_number } = req.body;
 
   try {
     //check if the user already exists in the database
@@ -45,6 +45,7 @@ export const registerUser = async (req, res) => {
       name: name,
       email: email,
       password: hashedPassword,
+      contact:contact_number
     });
 
     await newUser.save();
@@ -67,6 +68,7 @@ export const loginUser = async (req, res) => {
     const user = await userModel.findOne({ email });
 
     if (!user) {
+      
       return res.json({ success: false, message: "User Dosent Exists" });
     }
 
@@ -166,7 +168,7 @@ export const getBookedOrders = async (req, res) => {
 
     const bookedOrders = await bookingModel.find({ userEmail: userEmail });
 
-    return res.json({ success: true, bookedOrders });
+    return res.json({ success: true, bookedOrders:bookedOrders.reverse() });
   } catch (error) {
     console.log(error.message);
     return res.json({ success: false, message: error.message });

@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from "react";
 import "./userBookings.css";
-import userBookingsData from "./userBookingsData";
 import { AppContext } from "../../context/AppContext";
 import axios from "axios";
 import moment from "moment"
@@ -8,12 +7,12 @@ import moment from "moment"
 //for displaying the booking orders of registered users
 export default function UserBookings() {
   const [userBookings, setUserBookings] = useState([]);
-  const { backendUrl, userDetails } = useContext(AppContext);
+  const { backendUrl } = useContext(AppContext);
 
   const getBookingOrders = async () => {
     const response = await axios.post(
       backendUrl + "/api/user/get-booked-orders",
-      { userEmail: userDetails.email }
+      { userEmail: JSON.parse(localStorage.getItem("userDetails")).user.email }
     );
 
     if (response.data.success) {
@@ -25,7 +24,6 @@ export default function UserBookings() {
     getBookingOrders();
   }, []);
 
-  console.log(userBookings);
   return (
     <div className="user-bookings-container">
       <h2>Your Bookings</h2>

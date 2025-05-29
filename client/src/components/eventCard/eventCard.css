@@ -1,7 +1,8 @@
 .event-card{
     display: flex;
-    flex-direction: column;
+    min-height: 95px;
     align-items: center;
+    justify-content: center;
     gap:  10px;
     padding: 5px;
     border: 2px solid gray;
@@ -9,7 +10,9 @@
 }
 
 .event-card img{
-    width: 200px;
+    width: 150px;
+    max-width: 175px;
+    max-height: 150px;
 }
 
 @media (max-width:500px){
