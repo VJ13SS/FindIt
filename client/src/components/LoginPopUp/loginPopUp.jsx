@@ -33,7 +33,7 @@ export default function LoginPopUp() {
           backendUrl + "/api/user/sign-in",
           data
         );
-        console.log(response.data.message);
+        alert(response.data.message);
         setCurrentState("login");
       } else {
         const response = await axios.post(backendUrl + "/api/user/login", data);
@@ -66,7 +66,7 @@ export default function LoginPopUp() {
           backendUrl + "/api/shop/sign-in",
           formData
         );
-        console.log(response.data.message);
+        alert(response.data.message);
         setCurrentState("login");
       } else {
         const response = await axios.post(backendUrl + "/api/shop/login", data);

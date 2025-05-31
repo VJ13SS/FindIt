@@ -91,7 +91,7 @@ export default function ViewShop() {
               <tr>
                 <th>Image</th>
                 <th>Product Name</th>
-                <th>Product Price</th>
+                <th>Price Per Qty</th>
                 <th>Status</th>
                 <th>Book Item</th>
               </tr>

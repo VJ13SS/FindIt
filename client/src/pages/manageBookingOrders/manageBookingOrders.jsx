@@ -1,5 +1,5 @@
 import "./manageBookingOrders.css";
-import bookings from "./bookingsData";
+
 import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../context/AppContext";
 import axios from "axios";
@@ -9,7 +9,7 @@ import moment from "moment"
 export default function ManageBookingOrders() {
 
   const {backendUrl,userDetails} = useContext(AppContext)
-  const [bookingsData, setBookingsData] = useState(bookings);
+  const [bookingsData, setBookingsData] = useState([]);
   const changeStatus = async (id, option) => {
 
     const response = await axios.post(backendUrl + '/api/shop/change-booking-order-status',{bookingId:id,status:option})

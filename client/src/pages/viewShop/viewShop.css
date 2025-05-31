@@ -51,6 +51,7 @@
 .shop-events {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 20px;
   min-width: 90%;
   max-width: 95%;
@@ -73,7 +74,7 @@
   font-weight: 500;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 850px) {
   .view-shop table {
     width: 80vw;
   }
