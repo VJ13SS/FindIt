@@ -28,6 +28,7 @@
   width: 100%;
   position: relative;
   min-height: 70px;
+  cursor: pointer;
 }
 
 .product-options{

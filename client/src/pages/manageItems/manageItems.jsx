@@ -42,7 +42,7 @@ export default function ManageItems() {
         <div className="header products-list-format">
           <span>Image</span>
           <span>Name</span>
-          <span>Price</span>
+          <span>Price Per Qty</span>
           <span>Status</span>
         </div>
 
