@@ -10,7 +10,6 @@ import Dashboard from "./pages/dashboard/dashboard";
 import AddItems from "./pages/addItems/addItems";
 import ManageItems from "./pages/manageItems/manageItems";
 import UserBookings from "./pages/userBookings/userBookings";
-import {ToastContainer,toast} from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css'
 import AddEvents from "./pages/addEvents/addEvents";
 import ManageEvents from "./pages/manageEvents/manageEvents";
@@ -27,7 +26,6 @@ export default function App() {
         <LoginPopUp />
       ) : (
         <div className="app">
-          <ToastContainer />
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
