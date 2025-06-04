@@ -25,7 +25,7 @@ app.use('/api/shop',shopRouter)
 app.use('/files',express.static('uploads'))
 
 //port
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 4000
 
 app.listen(PORT,() => {
     console.log(`http://localhost:${PORT}`)
