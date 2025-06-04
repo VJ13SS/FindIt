@@ -7,7 +7,7 @@ import eventModel from "../models/events.js";
 import bookingModel from "../models/bookings.js";
 
 const createToken = (id) => {
-  return jwt.sign({ id }, "random#secret");
+  return jwt.sign({ id }, process.env.SECRET_KEY);
 };
 
 export const shopSignIn = async (req, res) => {

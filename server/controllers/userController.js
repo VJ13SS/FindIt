@@ -7,7 +7,7 @@ import productModel from "../models/products.js";
 import bookingModel from "../models/bookings.js";
 
 const createToken = (id) => {
-  return jwt.sign({ id }, "random#secret");
+  return jwt.sign({ id }, process.env.SECRET_KEY);
 };
 
 export const registerUser = async (req, res) => {
