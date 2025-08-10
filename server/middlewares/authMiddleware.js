@@ -11,7 +11,7 @@ export const authMiddleware = async (req, res, next) => {
   }
   try {
     //verify token
-    const tokenDecode = jwt.verify(token, "random#secret");
+    const tokenDecode = jwt.verify(token, process.env.SECRET_KEY);
     
     req.shop = await shopModel.findById(tokenDecode.id).select("-password");
     next();//callback function
